@@ -19,8 +19,8 @@ class ChatbotProc {
     fun chatbot(voiceMessage: String?): String? {
         var chatbotMessage: String? = ""
         try {
-            val apiURL = ""
-            val secretKey = ""
+            val apiURL = "https://czgmivn181.apigw.ntruss.com/custom/v1/7038/a11a20267ce07b76be7998fb2d3bf5604a34bc151a8a016e2c62f28ea965fbb7"
+            val secretKey = "d1hpQnRVaFR5YktIVFBKQW1PeU1OZVFySnlZSVV0bks="
             val url = URL(apiURL)
             val message = getReqMessage(voiceMessage)
             println("##$message")
