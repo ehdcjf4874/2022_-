@@ -34,36 +34,9 @@ class ChatbotActivity : AppCompatActivity() {
     lateinit var mRetrofitAPI: RetrofitAPI // 레트로핏 api객체입니다.
     lateinit var mCallTodoList : retrofit2.Call<JsonObject> // Json형식의 데이터를 요청하는 객체입니다.
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        var wifiManager = applicationContext.getSystemService(WIFI_SERVICE) as WifiManager
-
-
-        val wifiScanReceiver = object : BroadcastReceiver() {
-
-            override fun onReceive(context: Context, intent: Intent) {
-                val success = intent.getBooleanExtra(WifiManager.EXTRA_RESULTS_UPDATED, false)
-                if (success) {
-                    scanSuccess()
-                } else {
-                    scanFailure()
-                }
-            }
-        }
-
-        val intentFilter = IntentFilter()
-        intentFilter.addAction(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION)
-        applicationContext.registerReceiver(wifiScanReceiver, intentFilter)
-
-        val success = wifiManager.startScan()
-        if (!success) {
-            // scan failure handling
-            scanFailure()
-        }
-
 
         // 수신 신호 강도를 구한다
         Log.e("info", IntentFilter(WifiManager.WIFI_STATE_CHANGED_ACTION).toString())
@@ -134,8 +107,6 @@ class ChatbotActivity : AppCompatActivity() {
 
         }
     })
-
-
 
 
 }
